@@ -8,14 +8,32 @@ st.write(
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 if uploaded_file:
     st.write("File uploaded!")
-    st.write("**Select Raymond-Roy classification:**")
-    stage = st.radio("Raymond-Roy class:",[1,2,3])
+    prob = 5 #init probability
+
+
+
+    #st.write("Select Raymond-Roy classification:")
+    stage = st.radio("**Raymond-Roy class:**",[1,2,3])
 #    st.radio("Pick one", ["cats", "dogs"])
 
     match stage:
         case 1:
-            st.write("Recurrence probability is low")
+            prob += 2
         case 2:
-            st.write("Recurrence probability is moderate")
+            prob += 24
         case 3:
-            st.write("Recurrence probability is high")
+            prob += 39
+    
+    age = st.number_input("**Patient Age:**", 0, 125)
+    if age > 25:
+        prob += ((age-25)//2)
+
+    sex = st.radio("**Patient Sex:**", ["Female","Male","Unknown"])
+    match sex:
+        case "Female":
+            prob -= 5
+        case "Male":
+            prob += 5
+
+    probstr = str(prob)
+    st.write("Recurrence probability is " + probstr + "%")
