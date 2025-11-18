@@ -5,7 +5,7 @@ st.write(
     "Click the button to import your file."
 )
 
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload the aneurysm file")
 if uploaded_file:
     st.write("File uploaded!")
     prob = 5 #init probability
