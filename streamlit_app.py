@@ -35,5 +35,14 @@ if uploaded_file:
         case "Male":
             prob += 5
 
+    smoker = st.radio("**Patient Smoking Status:**", ["Nonsmoker","Smoker","Quit smoking within last 6 months"])
+    match sex:
+        case "Nonsmoker":
+            prob = prob // 1.9
+        case "Smoker":
+            prob = prob
+        case "Quit smoking within last 6 months":
+            prob = prob // 1.3
+    
     probstr = str(prob)
     st.write("Recurrence probability is " + probstr + "%")
