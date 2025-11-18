@@ -40,7 +40,7 @@ if uploaded_file:
         case "Nonsmoker":
             prob -= int(prob * .48)
         case "Smoker":
-            prob = prob + 2
+            prob = prob
         case "Quit smoking within last 6 months":
             prob -= int(prob * .23)
     
