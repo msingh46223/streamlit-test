@@ -1,4 +1,8 @@
 import streamlit as st
+import pydicom
+import numpy as np
+from PIL import Image
+
 
 st.title("Sample User Interface")
 st.write(
@@ -10,7 +14,7 @@ if uploaded_file:
     st.write("File uploaded!")
     prob = 5 #init probability
 
-
+    st.image(uploaded_file)
 
     #st.write("Select Raymond-Roy classification:")
     stage = st.radio("**Raymond-Roy class:**",[1,2,3])
