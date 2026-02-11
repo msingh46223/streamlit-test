@@ -2,6 +2,7 @@ import streamlit as st
 import pydicom
 import numpy as np
 from PIL import Image
+import dicom_preview
 
 
 st.title("Sample User Interface")
@@ -9,12 +10,13 @@ st.write(
     "Click the button to import your file."
 )
 
-uploaded_file = st.file_uploader("Upload the aneurysm file")
+uploaded_file = st.file_uploader("Upload the aneurysm file", max_upload_size=1000)
 if uploaded_file:
     st.write("File uploaded!")
     prob = 5 #init probability
 
-    st.image(uploaded_file)
+    dicom_preview.extract_dicom_preview(uploaded_file, "preview.png")
+    st.image("preview.png")
 
     #st.write("Select Raymond-Roy classification:")
     stage = st.radio("**Raymond-Roy class:**",[1,2,3])
