@@ -52,3 +52,15 @@ if uploaded_file:
     
     probstr = str(prob)
     st.write("Recurrence probability is " + probstr + "%")
+
+
+    csv_contents = f'''Raymond-Roy Class, Patient Age, Patient Sex, Smoking Status, Recurrence Probability,
+    {stage}, {age}, {sex}, {smoker}, {probstr}
+    '''
+
+    st.download_button(
+    label="Download CSV of patient data",
+    data=csv_contents,
+    file_name="data.csv",
+    mime="text/csv",
+)
